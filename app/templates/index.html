@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Funcionários</title>
+</head>
+<body>
+
+    <br>
+    <br><br>
+
+    <div class="container">
+
+        <h1>Lista de funcionario</h1>   
+        <a href="{{ url_for('adicionar') }}">Adicionar Funcionário</a>
+        <br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in funcionario %}
+                    <tr>
+                        <td>{{ i.nome_funcionario }}</td>
+                        <td>{{ i.cpf_funcionario }}</td>
+                        <td>{{ i.email_funcionario }}</td>
+                        <td><a class="b2delete" href="{{ url_for('deletar', id=i.id_funcionario) }}">Deletar</a></td>
+
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+     
+</body>
+</html>
