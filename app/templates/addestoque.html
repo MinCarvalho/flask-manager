@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Adicionar estoque</title>
+</head>
+<body>
+    <br>
+    <br><br>
+    <div class="container">
+        <h1>Adicionar estoque</h1>
+        <a href="{{ url_for('index') }}">Voltar</a><br><br>
+        
+        <form method="post" action="{{ url_for('addestoque') }}">
+            {{ form.csrf_token }} <br>
+        
+            {{ form.id_produto.label }} {{ form.id_produto }} <br>
+        
+            {{ form.cod_estoque.label }} {{ form.cod_estoque }} <br>
+            {{ form.qtd_estoque.label }} {{ form.qtd_estoque }} <br>
+            {{ form.status_estoque.label }} {{ form.status_estoque }} <br>
+        
+            <input class="btn" type="submit" value="Adicionar estoque">
+        </form>
+        
+    </div>
+</body>
+</html>

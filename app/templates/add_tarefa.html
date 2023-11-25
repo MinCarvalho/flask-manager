@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Adicionar Funcionário</title>
+</head>
+<body>
+    <br>
+    <br><br>
+    <div class="container">
+
+        <h1>Adicionar Tarefa</h1>
+        <a href="{{ url_for('index') }}">Voltar</a><br><br>
+        <form method="post" action="{{ url_for('add_tarefa') }}">
+            {{ form_tarefa.csrf_token }}
+            {{ form_tarefa.data_tarefa.label }} {{ form_tarefa.data_tarefa }} <br>
+            {{ form_tarefa.nome_tarefa.label }} {{ form_tarefa.nome_tarefa }} <br>
+            {{ form_tarefa.status_tarefa.label }} {{ form_tarefa.status_tarefa }} <br>
+            <input type="submit" value="Adicionar">
+        </form>
+        
+
+        
+    </div>
+</body>
+</html>

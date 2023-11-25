@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Adicionar cliente</title>
+</head>
+<body>
+    <br>
+    <br><br>
+    <div class="container">
+
+        <h1>Adicionar cliente</h1>
+        <a href="{{ url_for('index') }}">Voltar</a><br><br>
+        <form method="post" action="{{ url_for('addcliente') }}">
+            {{ form.csrf_token }} <br>
+            {{ form.nome_cliente.label }} {{ form.nome_cliente }} <br>
+            {{ form.cpf_cliente.label }} {{ form.cpf_cliente }} <br>
+            {{ form.email_cliente.label }} {{ form.email_cliente }} <br>
+
+            <input class="btn" type="submit" value="Adicionar cliente">
+        </form>
+        
+
+        
+    </div>
+</body>
+</html>

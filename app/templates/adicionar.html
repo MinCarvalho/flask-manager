@@ -13,14 +13,15 @@
 
         <h1>Adicionar Funcionário</h1>
         <a href="{{ url_for('index') }}">Voltar</a><br><br>
-        <form method="post" action="{{ url_for('adicionar') }}">
+        <form method="post" action="{{ url_for('addfuncionario') }}">
             {{ form.csrf_token }} <br>
             {{ form.nome_funcionario.label }} {{ form.nome_funcionario }} <br>
             {{ form.cpf_funcionario.label }} {{ form.cpf_funcionario }} <br>
             {{ form.email_funcionario.label }} {{ form.email_funcionario }} <br>
 
-            <input class="add-funcionario" type="submit" value="Adicionar Funcionário">
+            <input class="btn" type="submit" value="Adicionar Funcionário">
         </form>
+        
 
         
     </div>

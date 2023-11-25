@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Funcionários</title>
 </head>
+
 <body>
 
     <br>
@@ -13,8 +15,8 @@
 
     <div class="container">
 
-        <h1>Lista de funcionario</h1>   
-        <a href="{{ url_for('adicionar') }}">Adicionar Funcionário</a>
+        <h1>Lista de funcionario</h1>
+        <a href="{{ url_for('addfuncionario') }}">Adicionar Funcionário</a>
         <br>
 
         <table>
@@ -28,18 +30,176 @@
             </thead>
             <tbody>
                 {% for i in funcionario %}
-                    <tr>
-                        <td>{{ i.nome_funcionario }}</td>
-                        <td>{{ i.cpf_funcionario }}</td>
-                        <td>{{ i.email_funcionario }}</td>
-                        <td><a class="b2delete" href="{{ url_for('deletar', id=i.id_funcionario) }}">Deletar</a></td>
+                <tr>
+                    <td>{{ i.nome_funcionario }}</td>
+                    <td>{{ i.cpf_funcionario }}</td>
+                    <td>{{ i.email_funcionario }}</td>
+                    <td><a class="b2delete" href="{{ url_for('deletar', id=i.id_funcionario) }}">Deletar</a></td>
 
-
-                    </tr>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-     
+    <br><br><br>
+    <div class="container">
+
+        <h1>Lista de Clientes</h1>
+        <a href="{{ url_for('addcliente') }}">Adicionar Cliente</a>
+        <br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in cliente %}
+                <tr>
+                    <td>{{ c.nome_cliente }}</td>
+                    <td>{{ c.cpf_cliente }}</td>
+                    <td>{{ c.email_cliente }}</td>
+                    <td><a class="b2delete" href="{{ url_for('deletar_cliente', id=c.id_cliente) }}">Deletar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+
+        <h1>Lista de Produto</h1>
+        <a href="{{ url_for('add_produto') }}">Adicionar Produto</a>
+        <br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in produto %}
+                <tr>
+                    <td>{{ c.nome_produto }}</td>
+                    <td>{{ c.preco_produto }}</td>
+                   
+                    <td><a class="b2delete" href="{{ url_for('deletar_estoque', id=c.id_produto) }}">Deletar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+
+        <h1>Lista de Estoque</h1>
+        <a href="{{ url_for('addestoque') }}">Adicionar Estoque</a>
+        <br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Produto</th>
+                    <th>Cod</th>
+                    <th>Quantidade</th>
+                    <th>Status</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in estoque %}
+                    <tr>
+                        <td>{% if c.produto %}{{ c.produto.id_produto }}{% endif %}</td>
+                        <td>{{ c.cod_estoque }}</td>
+                        <td>{{ c.qtd_estoque }}</td>
+                        <td>{{ c.status_estoque }}</td>
+                        <td>
+                            {% if c.produto %}
+                                <a class="b2delete" href="{{ url_for('deletar_estoque', id=c.produto.id_produto) }}">Deletar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+
+        <h1>Lista de Tarefa</h1>
+        <a href="{{ url_for('add_tarefa') }}">Adicionar Tarefa</a>
+        <br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tarefa</th>
+                    <th>Status</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in tarefa %}
+                <tr>
+                    <td>{{ c.data_tarefa }}</td>
+                    <td>{{ c.nome_tarefa }}</td>
+                    <td>{{ c.status_tarefa }}</td>
+                   
+                    <td><a class="b2delete" href="{{ url_for('deletar_estoque', id=c.id_produto) }}">Deletar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+    <div class="container">
+        <h1>Lista de Tarefa</h1>
+        <a href="{{ url_for('add_tarefa') }}">Adicionar Tarefa</a>
+        <br>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tarefa</th>
+                    <th>Status</th>
+                    <th>Funcionário</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in funcionario_tarefa %}
+                <tr>
+                    <td>{{ c.Funcionario_Tarefa.Tarefa.data_tarefa }}</td>
+                    <td>{{ c.Funcionario_Tarefa.Tarefa.nome_tarefa }}</td>
+                    <td>{{ c.Funcionario_Tarefa.Tarefa.status_tarefa }}</td>
+                    <td>{{ c.Funcionario.nome_funcionario }}</td>
+                    <td><a class="b2delete" href="{{ url_for('deletar_estoque', id=c.Funcionario_Tarefa.id_produto) }}">Deletar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    
 </body>
+
 </html>
